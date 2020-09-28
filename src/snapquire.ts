@@ -1,15 +1,7 @@
-import { strict as assert } from 'assert'
-import { Visitor } from 'ast-types'
-import {
-  CallExpressionKind,
-  ExpressionKind,
-  NodeKind,
-  SpreadElementKind,
-} from 'ast-types/gen/kinds'
+import { CallExpressionKind, NodeKind } from 'ast-types/gen/kinds'
 import debug from 'debug'
 import path from 'path'
 import * as recast from 'recast'
-import { resolveNonCoreModule, getRelativeModulePath } from './resolve-module'
 import { NODE_CORE_MODULES } from './consts'
 import {
   AstPath,
@@ -18,7 +10,6 @@ import {
   CodeSection,
 } from './types'
 import { normalizeModulePath } from './ast-mutations'
-const b = recast.types.builders
 
 const logInfo = debug('snapreq:info')
 
@@ -78,7 +69,6 @@ function isTopLevel(astPath: AstPath) {
 export class Snapquirer {
   private readonly _lazyRequiresByVariableName = new Map()
   private readonly _basedir: string
-  private readonly _fullFilePath: string
   private readonly _didFindRequire: DidFindRequire
 
   constructor(
@@ -96,9 +86,6 @@ export class Snapquirer {
       opts.fullFilePath != null
         ? path.dirname(opts.fullFilePath)
         : process.cwd()
-    // TODO: do we need fullFilePath and if so is the default sensible?
-    this._fullFilePath =
-      opts.fullFilePath ?? path.join(this._basedir, '<unknown-file>')
   }
 
   transform(): string {
