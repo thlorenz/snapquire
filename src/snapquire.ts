@@ -32,6 +32,19 @@ function isStaticRequire(astPath: AstPath) {
   )
 }
 
+function isStaticRequireResolve(astPath: AstPath) {
+  const node = astPath.node
+  return (
+    node.callee.type === 'MemberExpression' &&
+    // @ts-ignore name does exist on callee.object
+    node.callee.object.name === 'require' &&
+    // @ts-ignore name does exist on callee.property
+    node.callee.property.name === 'resolve' &&
+    node.arguments.length === 1 &&
+    node.arguments[0].type === 'Literal'
+  )
+}
+
 function isTopLevel(astPath: AstPath) {
   if (astPath.scope.isGlobal) return true
   if (astPath.scope.depth !== 1) return false
@@ -130,8 +143,15 @@ export class Snapquirer {
           if (deferRequire && isTopLevel(astPath)) {
             self._makeRequireLazy(astPath)
           }
+        } else if (isStaticRequireResolve(astPath)) {
+          const { moduleName } = normalizeModulePath(astPath, self._basedir)
+          logInfo({
+            staticRequireResolve: self._stringifyNode(
+              astPath.node as CodeSection<CallExpressionKind>
+            ),
+            moduleName,
+          })
         }
-        // TODO: handle isStaticRequireResolve
         this.traverse(astPath)
       },
     }

@@ -15,3 +15,17 @@ test('single require', (t) => {
   console.log(result)
   t.end()
 })
+
+test('single require resolve', (t) => {
+  const source = dedent`
+      const pathA = require.resolve('a')
+      function main () {
+        return pathA 
+      }
+    `
+  const snapquirer = new Snapquirer(source)
+  const result = snapquirer.transform()
+
+  console.log(result)
+  t.end()
+})
