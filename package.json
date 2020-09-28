@@ -5,8 +5,8 @@
   "main": "dist/snapquire.js",
   "types": "dist/snapquire.d.ts",
   "scripts": {
-    "test": "tape dist/tests/*.test.js",
-    "test:ts": "ts-node src/tests/*.test.ts",
+    "test": "tape dist/tests/*.js",
+    "test:ts": "DEBUG=snapreq:* ts-node src/tests/*.ts",
     "tsc": "tsc",
     "lint": "prettier -c ./src/",
     "lint:fix": "prettier --format ./src",
@@ -19,11 +19,15 @@
   "homepage": "https://github.com/thlorenz/snapquire",
   "dependencies": {
     "acorn": "^8.0.1",
+    "debug": "^4.2.0",
     "recast": "^0.20.3"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/dedent": "^0.7.0",
     "@types/node": "^14.0.9",
     "@types/tape": "^4.13.0",
+    "ast-types": "^0.14.2",
     "dedent": "^0.7.0",
     "prettier": "^2.0.5",
     "tape": "^5.0.1",

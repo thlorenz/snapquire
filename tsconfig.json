@@ -12,11 +12,12 @@
     "emitDeclarationOnly": false,
     "importHelpers": true,
     "strict": true,
-    "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "incremental": false
+    "incremental": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   }
 }
