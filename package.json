@@ -30,6 +30,7 @@
     "@types/resolve": "^1.17.1",
     "@types/tape": "^4.13.0",
     "ast-types": "^0.14.2",
+    "cardinal": "^2.1.1",
     "dedent": "^0.7.0",
     "prettier": "^2.0.5",
     "tape": "^5.0.1",

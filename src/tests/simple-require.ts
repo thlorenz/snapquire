@@ -1,6 +1,14 @@
 import test from 'tape'
 import dedent from 'dedent'
 import { Snapquirer } from '../snapquire'
+// @ts-ignore
+import { highlight } from 'cardinal'
+
+function dumpCode(code: string) {
+  console.log('-------------------------')
+  console.log(highlight(code))
+  console.log('-------------------------')
+}
 
 test('single require', (t) => {
   const source = dedent`
@@ -12,10 +20,11 @@ test('single require', (t) => {
   const snapquirer = new Snapquirer(source)
   const result = snapquirer.transform()
 
-  console.log(result)
+  dumpCode(result)
   t.end()
 })
 
+/*
 test('single require resolve', (t) => {
   const source = dedent`
       const pathA = require.resolve('a')
@@ -29,3 +38,4 @@ test('single require resolve', (t) => {
   console.log(result)
   t.end()
 })
+*/
