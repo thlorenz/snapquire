@@ -1,0 +1,44 @@
+{
+  "name": "snapquire",
+  "version": "0.0.0",
+  "description": "Rewrite require statements to make a module v8-snapshot-able.",
+  "main": "dist/snapquire.js",
+  "types": "dist/snapquire.d.ts",
+  "scripts": {
+    "test": "tape dist/tests/*.test.js",
+    "test:ts": "ts-node src/tests/*.test.ts",
+    "tsc": "tsc",
+    "lint": "prettier -c ./src/",
+    "lint:fix": "prettier --format ./src",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thlorenz/snapquire.git"
+  },
+  "homepage": "https://github.com/thlorenz/snapquire",
+  "dependencies": {
+    "acorn": "^8.0.1",
+    "recast": "^0.20.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.9",
+    "@types/tape": "^4.13.0",
+    "dedent": "^0.7.0",
+    "prettier": "^2.0.5",
+    "tape": "^5.0.1",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "http://thlorenz.com"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=12"
+  }
+}
