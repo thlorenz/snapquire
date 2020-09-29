@@ -2,7 +2,8 @@ import { strict as assert } from 'assert'
 import { CallExpressionKind } from 'ast-types/gen/kinds'
 import * as recast from 'recast'
 import { resolveNonCoreModule, getRelativeModulePath } from './resolve-module'
-import { CallExpressionWithValueArg, AstPath } from './types'
+import { CallExpressionWithValueArg } from './types'
+import { NodePath } from 'ast-types/lib/node-path'
 const b = recast.types.builders
 
 function isCallExpressionWithValueArg(
@@ -19,7 +20,10 @@ export function nodeModuleName(node: CallExpressionKind) {
 /**
  * Normalizes module path for non-core modules
  */
-export function normalizeModulePath(astPath: AstPath, basedir: string) {
+export function normalizeModulePath(
+  astPath: NodePath<CallExpressionKind>,
+  basedir: string
+) {
   const moduleName = nodeModuleName(astPath.node)
   const fullModulePath = resolveNonCoreModule(moduleName, basedir)
   if (fullModulePath != null) {

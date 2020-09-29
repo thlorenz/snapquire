@@ -19,6 +19,7 @@
   "homepage": "https://github.com/thlorenz/snapquire",
   "dependencies": {
     "acorn": "^8.0.1",
+    "ast-util-plus": "^0.7.1",
     "debug": "^4.2.0",
     "recast": "^0.20.3",
     "resolve": "^1.17.0"

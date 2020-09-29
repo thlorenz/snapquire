@@ -1,13 +1,19 @@
 import { Visitor } from 'ast-types'
+import { NodePath } from 'ast-types/lib/node-path'
 import {
   CallExpressionKind,
   ExpressionKind,
   SpreadElementKind,
+  IdentifierKind,
+  NewExpressionKind,
 } from 'ast-types/gen/kinds'
 
 export type VisitCallExpression = Visitor['visitCallExpression']
-// @ts-ignore
-export type AstPath = Parameters<VisitCallExpression>[0]
+export type VisitIdentifier = Visitor['visitIdentifier']
+
+export type AstPath = NodePath<
+  CallExpressionKind | IdentifierKind | NewExpressionKind
+>
 
 export type CodeSection<T> = T & { start: number; end: number }
 export type CallExpressionWithValueArg = CallExpressionKind & {

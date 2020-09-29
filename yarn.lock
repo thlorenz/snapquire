@@ -65,6 +65,14 @@ ast-types@^0.14.2:
   dependencies:
     tslib "^2.0.1"
 
+ast-util-plus@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/ast-util-plus/-/ast-util-plus-0.7.1.tgz#5612e2f2af2ee127a8f6ac846520856f517c7c51"
+  integrity sha512-j5CjjuBgNUz7lequJ11bboMSOz3WbpUIKDtscmN37bn5WWsxzn7zb3kOCO+jXhvGY9C5IVwssKlG6BA5yqav7w==
+  dependencies:
+    ast-types "0.14.1"
+    private "0.1.8"
+
 available-typed-arrays@^1.0.0, available-typed-arrays@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.2.tgz#6b098ca9d8039079ee3f77f7b783c4480ba513f5"
@@ -441,7 +449,7 @@ prettier@^2.0.5:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
   integrity sha512-16c7K+x4qVlJg9rEbXl7HEGmQyZlG4R9AgP+oHKRMsMsuk8s+ATStlf1NpDqyBI1HpVyfjLOeMhH2LvuNvV5Vg==
 
-private@^0.1.8:
+private@0.1.8, private@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
   integrity sha512-VvivMrbvd2nKkiG38qjULzlc+4Vx4wm/whI9pQD35YrARNnhxeiRktSOhSukRLFNlzg6Br/cJPet5J/u19r/mg==
